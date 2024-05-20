@@ -13,7 +13,7 @@ vim hdfs-site.xml
   
   <property>
         <name>dfs.namenode.checkpoint.dir</name>
-	<value>/usr/local/hadoop/hd-data/sdn</value>
+	<value>/usr/local/hadoop/hd-data/snn</value>
 </property>
 <property>
 	<name>dfs.namenode.checkpoint.period</name>
