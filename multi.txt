@@ -1,0 +1,69 @@
+  ---- hduser ----
+  sudo apt update -y
+    7  apt install ssh vim pdsh openjdk-8-jdk git -y
+    8  sudo apt install ssh vim pdsh openjdk-8-jdk git -y
+    9  sudo apt install net-tools -y
+   10  java -version
+   11  java -v
+   12  java
+   13  java -version
+   14  ls /usr/lib/jvm/
+   15  java -version
+   16  sudo apt install openjdk-8-jdk -y
+   17  java -version
+   26  mkdir hadoop
+   27  sudo mkdir hadoop
+   38  sudo mv hadoop-3.4.0.tar.gz /home/hduser/Downloads/
+   42  tar xvzf hadoop-3.4.0.tar.gz 
+   44  sudo mv hadoop-3.4.0/* /usr/local/hadoop/
+   55  sudo chown -R hduser:hduser /usr/local/hadoop
+   56  sudo chmod -R 755 /usr/local/hadoop
+   59  vi .bashrc 
+   63  sudo vim .bashrc 
+   69  vim hadoop-env.sh 
+   70  vim core-site.xml 
+   71  vim hdfs-site.xml 
+   72  vim mapred-site.xml 
+   73  vim yarn-site.xml 
+   74  vim workers
+   81  sudo /etc/hosts
+   82  sudo vim /etc/hosts
+   83  cd /usr/local/
+   91  sudo vim workers 
+   92  ssh-keygen -t rsa
+   93  ssh-copy-id -i ~/.ssh/id_rsa.pub hduser@sdn
+   94  sudo ssh-copy-id -i ~/.ssh/id_rsa.pub hduser@sdn
+   97  sudo ssh-copy-id -i ~/.ssh/id_rsa.pub hduser@dn1
+   99  sudo vim /etc/hosts
+  100  sudo ssh-copy-id -i ~/.ssh/id_rsa.pub hduser@dn1
+  105  sudo ssh-copy-id -i ~/.ssh/id_rsa.pub hduser@dn1
+  106  sudo ssh-copy-id -i ~/.ssh/id_rsa.pub hduser@dn2
+  107  sudo ssh-copy-id -i ~/.ssh/id_rsa.pub hduser@sdn
+  108  rsync -a /usr/local/hadoop/etc/hadoop/* hduser@sdn:/usr/local/hadoop/etc/hadoop/
+  109  rsync -a /usr/local/hadoop/etc/hadoop/* hduser@dn1:/usr/local/hadoop/etc/hadoop/
+  110  rsync -a /usr/local/hadoop/etc/hadoop/* hduser@dn2:/usr/local/hadoop/etc/hadoop/
+  111  hadoop namenode -format
+  112  start-dfs.sh
+  113  jps
+  114  ssh-copy-id -i ~/.ssh/id_rsa.pub hduser@master
+
+  ----- data node -----
+
+
+    30  sudo hostnamectl set-hostname DN1
+   31  sudo hostname DN1
+   32  cd /usr/local/hadoop/etc/hadoop
+   33  ip a
+   34  cd
+   35  ls
+   36  sudo cp hosts /etc/hosts
+   37  cd /usr/hadoop/etc/hadoop
+   38  cd /usr/local/hadoop/etc/hadoop
+   39  nano hdfs-site.xml 
+   40  nano yarn-site.xml 
+   41  scp hdfs-site.xml hduser@DN2:/usr/local/hadoop/etc/hadoop
+   42  scp yarn-site.xml hduser@DN2:/usr/local/hadoop/etc/hadoop
+   43  mkdir /usr/local/hadoop/hd-data
+   44  mkdir /usr/local/hadoop/yarn
+
+   
