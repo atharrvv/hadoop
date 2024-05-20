@@ -1,0 +1,55 @@
+----- master -----
+stop-all.sh
+
+----- on data node -----
+sudo hostnamectl set-hostname snn
+sudo hostname snn
+sudo vim /etc/hosts
+rename snn
+/usr/local/hadoop/etc/hadoop/
+rm -rf *
+ls
+vim hdfs-site.xml 
+  
+  <property>
+        <name>dfs.namenode.checkpoint.dir</name>
+	<value>/usr/local/hadoop/hd-data/sdn</value>
+</property>
+<property>
+	<name>dfs.namenode.checkpoint.period</name>
+	<value>1800</value>
+</property>
+  
+cd usr/local/hadoop/hd-data/
+rm -rf *
+cd /usr/local/hadoop/
+cd hd-data/
+
+----- master ------
+sudo /usr/local/hadoop/etc/hadoop/
+vim masters
+add snn
+vim hdfs-site.xml
+<property>
+        <name>dfs.secondary.http.address</name>
+        <value>snn:9869</value>
+</property>
+
+vim workers
+add snn
+        
+sudo vim /etc/hosts
+add snn
+rsync -a /usr/local/hadoop/etc/hadoop/* hduser@snn:/usr/local/hadoop/etc/hadoop/
+ssh hduser@snn
+cd /usr/local/hadoop/etc/hadoop/
+ls
+exit
+hdfs dfsadmin -refreshNodes
+
+---- data node -----
+check /usr/local/hadoop/hd-data
+check /usr/local/hadoop/hd-data/snn
+    
+
+
