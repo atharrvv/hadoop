@@ -1,0 +1,28 @@
+wget https://mirrors.estointernet.in/apache/pig/pig-0.16.0/pig-0.16.0.tar.gz
+tar xvzf pig-0.16.0.tar.gz
+mv pig-0.16.0 /usr/local/
+sudo vim /etc/bash.bashrc
+
+export PIG_HOME=/usr/local/pig-0.16.0
+export PATH=$PATH:$PIG_HOME/bin
+export PATH=$PATH:/usr/local/hadoop/bin:/usr/local/hadoop/sbin
+
+source /etc/bash.bashrc
+pig -h
+----- Locally -----
+vim demo.txt
+pig -x local
+> demo1 = load '/home/hduser/demo.txt' using PigStorage (',') as (id:int,name:chararray,age:int,city:chararray);
+> dump demo1
+
+----- HDFS -----
+stop-all.sh
+mr-jobhistory-daemon.sh start historyserver
+start-all.sh
+hdfs dfs -mkdir /pig-test
+hdfs dfs -copyFromLocal demo.txt /pig-test
+pig
+> demo2 = load '/pig-test/demo.txt' using PigStorage (',') as (id:int,name:chararray,age:int,city:chararray);
+> dump demo2
+
+
